@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	data, err := rislib.LoadDataFromCSV("lib/testdata/test.csv")
+	data, err := rislib.LoadDataFromCSV("data/test.csv")
 	if err != nil {
 		log.Fatal(err)
 	}

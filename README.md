@@ -40,7 +40,7 @@ The RIS is a relative scoring system specifically for the sport of **Streetlifti
 
 ### Prerequisites
 
-- Go ≥ 1.20
+- Go ≥ 1.24
 - [`gonum`](https://github.com/gonum/gonum) for mathematical optimization
 
 ### Installation
@@ -48,6 +48,10 @@ The RIS is a relative scoring system specifically for the sport of **Streetlifti
 ```bash
 go get github.com/finalrep/ris-go/lib
 ```
+
+### Example
+
+- see our [example](https://github.com/finalrep/ris-go/examples) implementation
 
 ## Development and Contribution
 
