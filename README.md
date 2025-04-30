@@ -45,6 +45,7 @@ The RIS is a relative scoring system specifically for the sport of **Streetlifti
 
 ```bash
 go get github.com/finalrep/ris-go/lib
+```
 
 ## Development and Contribution
 
