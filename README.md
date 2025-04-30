@@ -14,10 +14,9 @@ The RIS is a relative scoring system specifically for the sport of **Streetlifti
 
 ### Formula
 
-&nbsp;
-**RIS = (Total × 100) / [A + (K − A) / (1 + Q · e^(−B · (BW − v)))]**
-
-&nbsp;
+$$
+\text{RIS} = \frac{\text{Total} \times 100}{A + \frac{K - A}{1 + Q \cdot e^{-B \cdot (\text{BW} - v)}}}
+$$
 
 **Parameters:**
 
