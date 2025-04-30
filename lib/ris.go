@@ -2,6 +2,7 @@ package rislib
 
 import "math"
 
+// RISParams contains our parameters for our fitted curve
 type RISParams struct {
 	A float64
 	K float64

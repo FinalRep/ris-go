@@ -4,12 +4,13 @@ import (
 	"gonum.org/v1/gonum/optimize"
 )
 
+// DataPoint contains our fitting data
 type DataPoint struct {
 	Total      float64
 	Bodyweight float64
 }
 
-// FitRISParams optimiert die Parameter A, K, Q, B, V auf Basis der Datenpunkte
+// FitRISParams optimizes the parameters A, K, Q, B, V using our DataPoints
 func FitRISParams(data []DataPoint, initial RISParams) (RISParams, error) {
 	problem := optimize.Problem{
 		Func: func(x []float64) float64 {
