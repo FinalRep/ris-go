@@ -1,48 +1,63 @@
-# RISLib – Relative Index for Streetlifting
+# ris-go – Relative Index for Streetlifting
 
-**RISLib** ist eine Go-Bibliothek zur Berechnung des *Relative Index for Streetlifting (RIS)*. Die Bibliothek erlaubt es, den RIS-Wert anhand individueller Kraftwerte und Körpergewicht zu berechnen und die Parameter des zugrunde liegenden mathematischen Modells auf Basis realer Sportdaten zu ermitteln.
+**ris-go** is a Go library for calculating the *Relative Index for Streetlifting (RIS)*. The library allows the calculation of the RIS value based on individual strength levels and body weight, and it provides a method for determining the parameters of the underlying mathematical model based on real sports data.
 
-Dieses Projekt entstand im Rahmen einer Bachelorarbeit mit dem Ziel, Bewertungsverfahren im Kraftsport vergleichbar und anpassbar zu machen.
+This project was created as part of a bachelor's thesis with the goal of making performance evaluation methods in strength sports comparable and adaptable.
 
 ---
 
-## 📘 Hintergrund
+## Background
 
-Der RIS ist ein relatives Bewertungssystem speziell für die Sportart **Streetlifting**. Er dient dazu, Athlet:innen unterschiedlicher Gewichtsklassen vergleichbar zu machen, indem Gesamtleistungen normalisiert werden.
+The RIS is a relative scoring system specifically for the sport of **Streetlifting**. It is designed to make athletes of different weight classes comparable by normalizing total performance.
 
-### Formel
+### Formula
 
-&nbsp;  
+&nbsp;
 **RIS = (Total × 100) / [A + (K − A) / (1 + Q · e^(−B · (BW − v)))]**
 
 &nbsp;
 
-**Parameter:**
+**Parameters:**
 
-- `Total`: Gesamtleistung (z. B. Summe aus Weighted Pull-Up und Weighted Dip)
-- `BW`: Körpergewicht (Bodyweight)
-- `A, K, Q, B, v`: Parameter, die durch Fitting an reale Daten optimiert werden
-
----
-
-## 📦 Funktionen
-
-- Berechnung des RIS-Werts mit gegebenen Parametern
-- Anpassung (Fitting) der RIS-Parameter an Leistungsdaten via nichtlinearer Optimierung
-- Einlesen von CSV-Daten zur Weiterverarbeitung
-- Modularer Aufbau in Go
+- `Total`: Total performance (e.g., sum of Weighted Pull-Up and Weighted Dip)
+- `BW`: Body weight
+- `A, K, Q, B, v`: Parameters that are optimized through fitting to real data
 
 ---
 
-## 🚀 Schnellstart
+## Features
 
-### Voraussetzungen
+- Calculation of the RIS value with given parameters
+- Fitting of RIS parameters to performance data via nonlinear optimization
+- Importing and processing CSV data
+- Modular architecture in Go
+
+---
+
+## Quick Start
+
+### Prerequisites
 
 - Go ≥ 1.20
-- [`gonum`](https://github.com/gonum/gonum) für mathematische Optimierung
+- [`gonum`](https://github.com/gonum/gonum) for mathematical optimization
 
 ### Installation
 
 ```bash
-go get github.com/deinbenutzername/rislib
+go get github.com/finalrep/ris-go/lib
+
+## Development and Contribution
+
+- _Test your code properly!_
+- use [conventional commit messages](https://www.conventionalcommits.org/en/v1.0.0/)
+- use [semantic versioning](https://semver.org/lang/de/) to create tags and versions
+- use [pre-commit](https://pre-commit.com/)
+
+### pre-commit hook
+
+This project uses [pre-commit](https://pre-commit.com/).
+Install pre-commit and run•
+```
+pre-commit install
+```
 
