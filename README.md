@@ -51,7 +51,7 @@ go get github.com/finalrep/ris-go/lib
 
 ### Example
 
-- see our [example](https://github.com/finalrep/ris-go/examples) implementation
+- see our [example](https://github.com/FinalRep/ris-go/tree/main/examples) implementation
 
 ## Development and Contribution
 
