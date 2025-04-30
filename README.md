@@ -1,3 +1,5 @@
+![CI Status](https://github.com/finalrep/ris-go/actions/workflows/ci.yml/badge.svg)
+
 # ris-go – Relative Index for Streetlifting
 
 **ris-go** is a Go library for calculating the *Relative Index for Streetlifting (RIS)*. The library allows the calculation of the RIS value based on individual strength levels and body weight, and it provides a method for determining the parameters of the underlying mathematical model based on real sports data.
