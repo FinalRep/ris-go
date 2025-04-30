@@ -13,22 +13,23 @@ jobs:
     runs-on: ubuntu-latest  # We are still using Ubuntu to define the runner, but Alpine-based container will be used
 
     container:
-      image: golang:1.22-alpine  # Use Go 1.22 with Alpine as the container image
+      image: golang:1.24.2-alpine  # Use Go 1.24.2 with Alpine as the container image
 
     steps:
     # Step 1: Checkout code
     - name: Checkout code
       uses: actions/checkout@v3  # Use the latest stable version v3
 
-    # Step 2: Install dependencies (golint, gofmt, etc.)
+    # Step 2: Install dependencies (golint, gofmt, gosec, etc.)
     - name: Install dependencies
       run: |
         # Install git and bash if not already available
         apk add --no-cache git bash
         # Install build dependencies
         apk add --no-cache --virtual .build-deps gcc musl-dev
-        # Install golint
+        # Install golint, gosec and other tools
         go install golang.org/x/lint/golint@latest
+        go install github.com/securego/gosec/v2/cmd/gosec@latest
 
     # Step 3: Cache Go modules
     - name: Cache Go modules
@@ -46,6 +47,8 @@ jobs:
         go vet ./...
         # Run golint to check code style
         golint ./...
+        # Run gosec to check for security vulnerabilities
+        gosec -quiet ./...
 
     # Step 5: Run unit tests
     - name: Run unit tests
