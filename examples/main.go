@@ -25,7 +25,7 @@ func main() {
 	}
 
 	// calculate fitting parameters
-	femaleFit, err := ris.FitRISParams(femaleData, 100, true)
+	femaleFit, err := ris.FitRISParams(femaleData, 100, false)
 	if err != nil {
 		log.Fatal(err)
 	}
