@@ -1,4 +1,4 @@
-package rislib
+package ris
 
 import (
 	"testing"
@@ -10,7 +10,7 @@ func TestLoadDataFromCSV(t *testing.T) {
 	assert := assert.New(t)
 
 	t.Run("success", func(t *testing.T) {
-		data, err := LoadDataFromCSV("testdata/test.csv")
+		data, err := LoadDataFromCSV("testdata/female.csv")
 		assert.NoError(err)
 		assert.NotNil(data)
 	})

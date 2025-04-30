@@ -1,9 +1,9 @@
-package rislib
+package ris
 
 import "testing"
 
 func TestRISBasic(t *testing.T) {
-	params := RISParams{A: 10, K: 100, Q: 1, B: 0.05, V: 75}
+	params := Params{A: 10, K: 100, Q: 1, B: 0.05, V: 75}
 	score := RIS(150, 75, params)
 
 	if score <= 0 {

@@ -155,7 +155,7 @@ linters:
 issues:
   # Excluding configuration per-path, per-linter, per-text and per-source
   exclude-rules:
-    - path: _test\.go
+    - path: test\.go
       linters:
         - gomnd
         - noctx # not required in many cases
@@ -163,6 +163,7 @@ issues:
         - funlen
         - goconst
         - gocognit
+        - gocritic
         - gocyclo
         - err113
         - staticcheck # for tests some functionality might be used suboptimal. Consider.

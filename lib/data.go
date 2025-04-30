@@ -1,4 +1,4 @@
-package rislib
+package ris
 
 import (
 	"encoding/csv"
@@ -32,7 +32,7 @@ func LoadDataFromCSV(path string) ([]DataPoint, error) {
 			return nil, err
 		}
 		data = append(data, DataPoint{
-			Bodyweight: bw,
+			BodyWeight: bw,
 			Total:      total,
 		})
 	}

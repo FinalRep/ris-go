@@ -4,24 +4,28 @@ import (
 	"fmt"
 	"log"
 
-	rislib "ris-go/lib"
+	ris "ris-go/lib"
 )
 
 func main() {
-	data, err := rislib.LoadDataFromCSV("data/test.csv")
+	data, err := ris.LoadDataFromCSV("data/male.csv")
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	initial := rislib.RISParams{A: 10, K: 100, Q: 1, B: 0.05, V: 75}
-	fitted, err := rislib.FitRISParams(data, initial)
+	fitted, err := ris.FitRISParams(data, 100, true)
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	fmt.Printf("Optimierte Parameter: %+v\n", fitted)
 	for _, dp := range data {
-		score := rislib.RIS(dp.Total, dp.Bodyweight, fitted)
-		fmt.Printf("RIS für %.1f kg BW / %.1f kg Total: %.2f\n", dp.Bodyweight, dp.Total, score)
+		score := ris.RIS(dp.Total, dp.BodyWeight, fitted.Params)
+		fmt.Printf("RIS: %.2f, Bodyweight: %.2f, Total: %.2f\n", score, dp.BodyWeight, dp.Total)
 	}
+
+	// Xavier first 600 total in 2023
+	// Bodyweight: 92.45, Total: 600, 2023 RIS: 115.74819176961559
+	xavier := ris.RIS(600.0, 92.45, fitted.Params)
+	fmt.Printf("First 600 Xavier 2023 expected: 115.75, calculated: %.2f\n", xavier)
 }
