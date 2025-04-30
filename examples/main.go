@@ -31,11 +31,11 @@ func main() {
 	}
 
 	// plot result
-	if err := ris.PlotFitGraph(maleData, maleFit, "male.png"); err != nil {
+	if err := ris.PlotFitGraph(maleData, maleFit, "Generalized Logistic Fit Male", "male.png"); err != nil {
 		log.Fatal(err)
 	}
 	// plot result
-	if err := ris.PlotFitGraph(femaleData, femaleFit, "female.png"); err != nil {
+	if err := ris.PlotFitGraph(femaleData, femaleFit, "Generalized Logistic Fit Female", "female.png"); err != nil {
 		log.Fatal(err)
 	}
 

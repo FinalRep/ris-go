@@ -14,9 +14,9 @@ import (
 
 // PlotFitGraph plots the datapoints and the fitted generalized logistic curve.
 //nolint:funlen // TBD
-func PlotFitGraph(data []DataPoint, result FitResult, filename string) error {
+func PlotFitGraph(data []DataPoint, result FitResult, title, filename string) error {
 	p := plot.New()
-	p.Title.Text = "Generalized Logistic Fit"
+	p.Title.Text = title
 	p.X.Label.Text = "Bodyweight (kg)"
 	p.Y.Label.Text = "Total (kg)"
 	p.Add(plotter.NewGrid())
