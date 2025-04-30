@@ -1,0 +1,61 @@
+name: Go CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # We are still using Ubuntu to define the runner, but Alpine-based container will be used
+
+    container:
+      image: golang:1.22-alpine  # Use Go 1.22 with Alpine as the container image
+
+    steps:
+    # Step 1: Checkout code
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    # Step 2: Install dependencies (golint, gofmt, etc.)
+    - name: Install dependencies
+      run: |
+        # Install git and bash if not already available
+        apk add --no-cache git bash
+        # Install build dependencies
+        apk add --no-cache --virtual .build-deps gcc musl-dev
+        # Install golint
+        go install golang.org/x/lint/golint@latest
+
+    # Step 3: Cache Go modules
+    - name: Cache Go modules
+      uses: actions/cache@v2
+      with:
+        path: ~/go/pkg/mod
+        key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+        restore-keys: |
+          ${{ runner.os }}-go-
+
+    # Step 4: Run static code checks
+    - name: Run static code checks
+      run: |
+        # Run go vet to check for potential issues in code
+        go vet ./...
+        # Run golint to check code style
+        golint ./...
+
+    # Step 5: Run unit tests
+    - name: Run unit tests
+      run: |
+        # Run all tests with verbose output
+        go test -v ./...
+
+    # Optional: Step 6: Run gofmt to check for code formatting
+    - name: Run gofmt check
+      run: |
+        # Check if files are properly formatted
+        gofmt -s -l .  # If files are not formatted, it will list them
+
