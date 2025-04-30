@@ -1,4 +1,6 @@
 ![CI Status](https://github.com/finalrep/ris-go/actions/workflows/ci.yml/badge.svg)
+[![Built with Mage](https://magefile.org/badge.svg)](https://magefile.org)
+
 
 # ris-go – Relative Index for Streetlifting
 
@@ -67,3 +69,18 @@ Install pre-commit and run•
 pre-commit install
 ```
 
+### Using mage
+
+Install [Mage](https://github.com/magefile/mage/) by
+
+```
+go install github.com/magefile/mage@latest
+mage -init
+
+# outputs all possible usage options
+mage
+```
+
+### Testing
+
+Run `mage test:run` to test the code and `mage test:cover` to see test coverage
