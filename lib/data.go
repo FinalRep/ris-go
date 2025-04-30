@@ -23,11 +23,9 @@ func LoadDataFromCSV(path string) ([]DataPoint, error) {
 	for _, row := range rows[1:] { // Überspringt Header
 		bw, _ := strconv.ParseFloat(row[0], 64)
 		total, _ := strconv.ParseFloat(row[1], 64)
-		risVal, _ := strconv.ParseFloat(row[2], 64)
 		data = append(data, DataPoint{
 			Bodyweight: bw,
 			Total:      total,
-			RISValue:   risVal,
 		})
 	}
 	return data, nil

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	rislib "github.com/finalrep/ris-go/lib"
+	rislib "ris-go/lib"
 )
 
 func main() {

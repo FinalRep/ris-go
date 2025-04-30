@@ -7,7 +7,6 @@ import (
 type DataPoint struct {
 	Total      float64
 	Bodyweight float64
-	RISValue   float64 // Optionale Zielwerte für fitting
 }
 
 // FitRISParams optimiert die Parameter A, K, Q, B, V auf Basis der Datenpunkte
@@ -18,17 +17,23 @@ func FitRISParams(data []DataPoint, initial RISParams) (RISParams, error) {
 			var sum float64
 			for _, d := range data {
 				predicted := RIS(d.Total, d.Bodyweight, params)
-				actual := d.RISValue
-				diff := predicted - actual
-				sum += diff * diff
+				relativeError := (predicted - d.Total) / d.Total // Relativer Fehler
+				sum += relativeError * relativeError
 			}
 			return sum // Minimierung des quadratischen Fehlers
 		},
 	}
 
+	settings := &optimize.Settings{
+		FuncEvaluations: 1e5,
+		MajorIterations: 1000,
+	}
+
+	method := &optimize.NelderMead{}
+
 	result, err := optimize.Minimize(problem, []float64{
 		initial.A, initial.K, initial.Q, initial.B, initial.V,
-	}, nil)
+	}, settings, method)
 
 	if err != nil {
 		return RISParams{}, err
