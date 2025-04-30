@@ -54,6 +54,10 @@ go get github.com/finalrep/ris-go/lib
 
 - see our [example](https://github.com/FinalRep/ris-go/tree/main/examples) implementation
 
+The following plot uses the 2023 data and our example to create a fitting
+
+![data plot](https://github.com/finalrep/ris-go/blob/main/examples/test.png?raw=true)
+
 ## Development and Contribution
 
 - _Test your code properly!_

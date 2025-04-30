@@ -18,6 +18,10 @@ func main() {
 		log.Fatal(err)
 	}
 
+	if err := ris.PlotFitGraph(data, fitted, "test.png"); err != nil {
+		log.Fatal(err)
+	}
+
 	fmt.Printf("Optimierte Parameter: %+v\n", fitted)
 	for _, dp := range data {
 		score := ris.RIS(dp.Total, dp.BodyWeight, fitted.Params)
