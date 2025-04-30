@@ -22,7 +22,7 @@ func LoadDataFromCSV(path string) ([]DataPoint, error) {
 	}
 
 	data := []DataPoint{}
-	for _, row := range rows[1:] { // Überspringt Header
+	for _, row := range rows[1:] {
 		bw, err := strconv.ParseFloat(row[0], 64)
 		if err != nil {
 			return nil, err
