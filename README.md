@@ -53,9 +53,10 @@ go get github.com/finalrep/ris-go/lib
 ### Example
 
 - see our [example](https://github.com/FinalRep/ris-go/tree/main/examples) implementation
-- The following plot uses the 2023 data and our example to create a fitting
+- The following plots use the 2023 data and our example to create a fitting for both male and female athletes
 
-![data plot](https://github.com/finalrep/ris-go/blob/main/examples/test.png?raw=true)
+![data plot male](https://github.com/finalrep/ris-go/blob/main/examples/male.png?raw=true)
+![data plot female](https://github.com/finalrep/ris-go/blob/main/examples/female.png?raw=true)
 
 ## Development and Contribution
 
