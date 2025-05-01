@@ -52,8 +52,7 @@ func (p Params) Inverse(x, normalizer float64) float64 {
 
 // FitRISParams fits the generalized logistic model to data, returning FitResult.
 // normalizer: e.g., 100 for index normalization.
-// isMale: true for male weight classes (affects ticks, optional here).
-func FitRISParams(data []DataPoint, normalizer float64, isMale bool) (FitResult, error) {
+func FitRISParams(data []DataPoint, normalizer float64) (FitResult, error) {
 	if len(data) < 5 {
 		return FitResult{}, ErrNotEnoughData
 	}
