@@ -67,16 +67,16 @@ func FitRISParams(data []DataPoint, normalizer float64) (FitResult, error) {
 
 	// estimate A: min(y) - (max(y)-min(y))/3
 	minY, maxY := floats.Min(y), floats.Max(y)
-	Ainit := minY - (maxY-minY)/3.0
+	A := minY - (maxY-minY)/3.0
 
 	// initial parameter guesses: A, K, B, V, Q
-	init := []float64{Ainit, maxY, 0.01, x[len(x)/2], 1.0}
+	init := []float64{maxY, 0.01, x[len(x)/2], 1.0}
 
 	// define least-squares objective
 	problem := optimize.Problem{
 		Func: func(params []float64) float64 {
 			sum := 0.0
-			p := Params{A: params[0], K: params[1], B: params[2], V: params[3], Q: params[4]}
+			p := Params{A: A, K: params[0], B: params[1], V: params[2], Q: params[3]}
 			for i := range x {
 				d := GeneralizedLogistic(x[i], p) - y[i]
 				sum += d * d
@@ -94,7 +94,7 @@ func FitRISParams(data []DataPoint, normalizer float64) (FitResult, error) {
 	}
 
 	opt := result.X
-	params := Params{A: opt[0], K: opt[1], B: opt[2], V: opt[3], Q: opt[4]}
+	params := Params{A: A, K: opt[0], B: opt[1], V: opt[2], Q: opt[3]}
 
 	// compute RIS*Total for each data point and fit linear model
 	scores := make([]float64, len(data))
