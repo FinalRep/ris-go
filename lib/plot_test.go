@@ -14,7 +14,7 @@ func TestPlotFitGraph(t *testing.T) {
 		data, err := LoadDataFromCSV("testdata/male.csv")
 		assert.NoError(err)
 
-		fit, err := FitRISParams(data, 100)
+		fit, err := FitRISParamsBFGS(data, 100)
 		assert.NoError(err)
 
 		err = PlotFitGraph(data, fit, "test", "test.png")

@@ -5,54 +5,14 @@ and compute the RIS (Relative Intensity Score) index.
 package ris
 
 import (
-	"errors"
-	"math"
-
 	"gonum.org/v1/gonum/floats"
 	"gonum.org/v1/gonum/optimize"
 	"gonum.org/v1/gonum/stat"
 )
 
-var (
-	ErrNotEnoughData = errors.New("not enough data points to fit model")
-)
-
-// DataPoint holds one observation: bodyweight and total lift
-type DataPoint struct {
-	BodyWeight float64 // BW
-	Total      float64 // Total (kg)
-}
-
-// Params are the generalized logistic parameters
-// A: lower asymptote
-// K: upper asymptote
-// B: growth rate
-// V: midpoint location
-// Q: related to value at x=0
-type Params struct {
-	A, K, B, V, Q float64
-}
-
-// FitResult holds the fitted Params and resulting linear approximation
-type FitResult struct {
-	Params        Params  // fitted model parameters
-	LineSlope     float64 // slope for RIS*Total vs BW
-	LineIntercept float64 // intercept for RIS*Total vs BW
-}
-
-// GeneralizedLogistic computes the value of the model at x
-func GeneralizedLogistic(x float64, p Params) float64 {
-	return p.A + (p.K-p.A)/(1+p.Q*math.Exp(-p.B*(x-p.V)))
-}
-
-// Inverse computes normalizer / logistic(x)
-func (p Params) Inverse(x, normalizer float64) float64 {
-	return normalizer / GeneralizedLogistic(x, p)
-}
-
-// FitRISParams fits the generalized logistic model to data, returning FitResult.
+// FitRISParamsNelder fits the generalized logistic model to data, returning FitResult.
 // normalizer: e.g., 100 for index normalization.
-func FitRISParams(data []DataPoint, normalizer float64) (FitResult, error) {
+func FitRISParamsNelder(data []DataPoint, normalizer float64) (FitResult, error) {
 	if len(data) < 5 {
 		return FitResult{}, ErrNotEnoughData
 	}
