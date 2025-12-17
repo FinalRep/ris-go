@@ -30,11 +30,6 @@ def fit_curve(x_data, y_data):
             lambda x, K, B, v, Q: generalized_logistic_function(x, A, K, B, v, Q),
             x_data, y_data, p0=p0, bounds=bounds, loss="soft_l1", maxfev=10000, ftol=1e-5,
         )
-
-        with open(".log", "w") as f:
-            f.write(str(p0))
-
-
         
         return {"A": A, "K": popt[0], "B": popt[1], "V": popt[2], "Q": popt[3]}
     except Exception as e:
