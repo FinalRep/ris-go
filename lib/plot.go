@@ -102,6 +102,8 @@ func PlotFitGraph(data []DataPoint, result FitResult, title, filename string) er
 			maxY = pt.Y
 		}
 	}
+	minX = minX - 10
+	maxX = maxX + 10
 	p.X.Tick.Marker = plot.ConstantTicks(generateTicks(minX, maxX, 5))
 	p.Y.Tick.Marker = plot.ConstantTicks(generateTicks(minY, maxY, 50))
 

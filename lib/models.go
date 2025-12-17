@@ -13,4 +13,5 @@ type FitResult struct {
 	Params        Params
 	LineSlope     float64
 	LineIntercept float64
+	RMSE          float64
 }

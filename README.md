@@ -50,6 +50,17 @@ $$
 go get github.com/finalrep/ris-go/lib
 ```
 
+#### Python setup
+
+```python
+python3 -m venv .venv  # Creation of a virtualenv is recommanded
+source .venv/bin/activate
+pip install -r requirements.txt
+
+## Setting the path to the python script is necessary 
+export RIS_PYTHON_SCRIPT=[YOUR PATH]/ris-go/lib/fit_bridge.py
+```
+
 ### Example
 
 - see our [example](https://github.com/FinalRep/ris-go/tree/main/examples) implementation
