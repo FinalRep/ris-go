@@ -47,4 +47,7 @@ func main() {
 	// Bodyweight: 92.45, Total: 600, 2023 RIS: 115.74819176961559
 	xavier := ris.RIS(600.0, 92.45, maleFit.Params)
 	fmt.Printf("First 600 Xavier 2023 expected: 115.75, calculated: %.2f\n", xavier)
+
+	fmt.Printf("Male RMSE: %.2f\n", maleFit.RMSE)
+	fmt.Printf("Female RMSE: %.2f\n", femaleFit.RMSE)
 }
