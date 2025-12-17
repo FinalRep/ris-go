@@ -19,13 +19,13 @@ func main() {
 	}
 
 	// calculate fitting parameters
-	maleFit, err := ris.FitRISParamsBFGS(maleData, 100)
+	maleFit, err := ris.FitRISParamsNelder(maleData, 100)
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	// calculate fitting parameters
-	femaleFit, err := ris.FitRISParamsBFGS(femaleData, 100)
+	femaleFit, err := ris.FitRISParamsNelder(femaleData, 100)
 	if err != nil {
 		log.Fatal(err)
 	}

@@ -27,7 +27,7 @@ func FitRISParamsNelder(data []DataPoint, normalizer float64) (FitResult, error)
 
 	// estimate A: min(y) - (max(y)-min(y))/3
 	minY, maxY := floats.Min(y), floats.Max(y)
-	A := minY - (maxY-minY)/3.0
+	A := minY - (maxY - minY) * (4/3) * 0.25
 
 	// initial parameter guesses: A, K, B, V, Q
 	init := []float64{maxY, 0.01, x[len(x)/2], 1.0}
