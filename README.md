@@ -50,16 +50,19 @@ $$
 go get github.com/finalrep/ris-go/lib
 ```
 
-#### Python setup
+#### (Optional) Python setup
+
+only needed if you want to use `FitRISParamsScipy`
 
 ```python
 python3 -m venv .venv  # Creation of a virtualenv is recommanded
 source .venv/bin/activate
 pip install -r requirements.txt
-
-## Setting the path to the python script is necessary 
-export RIS_PYTHON_SCRIPT=[YOUR PATH]/ris-go/lib/fit_bridge.py
 ```
+
+### Usage
+
+We recommend to use `FitRISParamsNelder` which uses NelderMead for fitting optimization. The original implementation can be used by using `FitRISParamsScipy` but needs extra setup for python.
 
 ### Example
 

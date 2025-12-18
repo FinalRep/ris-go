@@ -15,6 +15,15 @@ func TestFitRISParamsScipy(t *testing.T) {
 	if err != nil {
 		t.Skip("Skipping Scipy test: python3 not found in PATH")
 	}
+	_, err = exec.LookPath("pip")
+	if err != nil {
+		t.Skip("Skipping Scipy test: pip not found in PATH")
+	}
+	cmd := exec.Command("python3", "-m", "pip", "check")
+	_, err = cmd.CombinedOutput()
+	if err != nil {
+		t.Skip("Skipping Scipy test: dependecies not installed")
+	}
 
 	tests := map[string]bool{
 		"male":   true,
@@ -29,10 +38,10 @@ func TestFitRISParamsScipy(t *testing.T) {
 			// Call the new Scipy bridge function
 			fit, err := FitRISParamsScipy(data, 100)
 			assert.NoError(err)
-			
+
 			// Ensure the parameters found by Scipy are physically realistic
 			assert.True(fittingIsInRange(fit.Params, male), "Scipy parameters out of expected range for %s", test)
-			
+
 			// Verify linear model components were calculated
 			assert.NotZero(fit.LineSlope)
 			assert.NotZero(fit.LineIntercept)
