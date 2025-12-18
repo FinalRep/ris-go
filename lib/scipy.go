@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"math"
+	"os"
 	"os/exec"
 	"path/filepath"
 	"runtime"
@@ -32,6 +33,11 @@ func FitRISParamsScipy(data []DataPoint, normalizer float64) (FitResult, error) 
 	libDir := filepath.Dir(filename)
 	scriptPath := filepath.Join(libDir, "fit_bridge.py")
 
+	if _, err := os.Stat(scriptPath); err != nil {
+		return FitResult{}, fmt.Errorf("script not found: %v", err)
+	}
+
+	// #nosec G204: scriptPath is safely constructed
 	cmd := exec.Command("python3", scriptPath)
 	cmd.Stdin = bytes.NewReader(inputJSON)
 
@@ -82,4 +88,3 @@ func FitRISParamsScipy(data []DataPoint, normalizer float64) (FitResult, error) 
 		RMSE:          rmse,
 	}, nil
 }
-
