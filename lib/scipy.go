@@ -47,7 +47,6 @@ func FitRISParamsScipy(data []DataPoint, normalizer float64) (FitResult, error) 
 	cmd.Stderr = &stderr // Capture errors here
 
 	if err := cmd.Run(); err != nil {
-		// Now you will see the ACTUAL Python error (e.g., "ModuleNotFoundError")
 		return FitResult{}, fmt.Errorf("python error: %v, stderr: %s", err, stderr.String())
 	}
 
