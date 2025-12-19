@@ -6,7 +6,7 @@
 
 **ris-go** is a Go library for calculating the *Relative Index for Streetlifting (RIS)*. The library allows the calculation of the RIS value based on individual strength levels and body weight, and it provides a method for determining the parameters of the underlying mathematical model based on real sports data.
 
-This project was initially created by [Waris Radji](https://www.instagram.com/riiswa) and [Mathieu Ardoin](https://www.instagram.com/mat95.sw) as part of a bachelor's thesis with the goal of making performance evaluation methods in strength sports comparable and adaptable.
+This project was [initially created](https://warisradji.com/ris/) by [Waris Radji](https://www.instagram.com/riiswa) and [Mathieu Ardoin](https://www.instagram.com/mat95.sw) as part of a bachelor's thesis with the goal of making performance evaluation methods in strength sports comparable and adaptable.
 
 ---
 
